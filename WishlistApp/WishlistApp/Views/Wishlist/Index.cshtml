@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Wishlists";
+    var wishlists = Model;
+}
+
+@section scripts {
+    <script type="text/javascript">
+        wishlistApp.controller('wishlistsController', function ($scope, $http)
+        {
+            $scope.Wishlists = [];
+
+            $http.post("@Url.Action("GetWishlists", "Wishlist")", {})
+                .success(function (data, status, headers, config)
+                {
+                    $scope.Wishlists = data.Wishlists;
+                });
+
+            $scope.addWishlist = function ()
+            {
+                $http.post("@Url.Action("NewWishlist", "Wishlist")", {})
+                    .success(function (data, status, headers, config)
+                    {
+                        $scope.Wishlists.push(data);
+                    });
+            };
+
+            $scope.changeWishlist = function (wl)
+            {
+                $http.post("@Url.Action("ChangeWishlist", "Wishlist")", wl)
+                    .success(function (data, status, headers, config)
+                    {
+                        if (data.Success)
+                            ;
+                        else
+                            console.warn(data.Exception);
+                    });
+            }
+
+            $scope.toggleWishlistVisibility = function (wl)
+            {
+                wl.IsPublic = !wl.IsPublic;
+                $http.post("@Url.Action("ChangeWishlist", "Wishlist")", wl)
+                    .success(function (data, status, headers, config)
+                    {
+                        if (data.Success)
+                            ;
+                        else
+                            console.warn(data.Exception);
+                    });
+            }
+
+            $scope.removeWishlist = function (wl)
+            {
+                $http.post("@Url.Action("RemoveWishlist", "Wishlist")", { ID: wl.ID })
+                    .success(function (data, status, headers, config)
+                    {
+                        if (data.Success)
+                        {
+                            var index = $scope.Wishlists.indexOf(wl);
+                            if (index >= 0)
+                                $scope.Wishlists.splice(index, 1);
+                        }
+                        else
+                            console.warn(data.Exception);
+                    });
+            }
+
+            $scope.addWishlistItem = function (wl)
+            {
+                $http.post("@Url.Action("NewWishlistItem", "Wishlist")", { ID: wl.ID })
+                    .success(function (data, status, headers, config)
+                    {
+                        if (data.Success)
+                            wl.WishlistItems.push(data.Result);
+                        else
+                            console.warn(data.Exception);
+                    });
+            };
+
+            $scope.changeWishlistItem = function (wli)
+            {
+                $http.post("@Url.Action("ChangeWishlistItem", "Wishlist")", wli)
+                    .success(function (data, status, headers, config)
+                    {
+                        if (data.Success)
+                            ;
+                        else
+                            console.warn(data.Exception);
+                    });
+            };
+
+            $scope.removeWishlistItem = function (wli, wl)
+            {
+                $http.post("@Url.Action("RemoveWishlistItem", "Wishlist")", { ID: wli.ID })
+                    .success(function (data, status, headers, config)
+                    {
+                        if (data.Success)
+                        {
+                            var index = wl.WishlistItems.indexOf(wli);
+                            if (index >= 0)
+                                wl.WishlistItems.splice(index, 1);
+                        }
+                        else
+                            console.warn(data.Exception);
+                    });
+            };
+        });
+    </script>
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div ng-controller="wishlistsController" ng-cloak>
+    <ul>
+        <li ng-repeat="wl in Wishlists">
+            <input type="text" ng-model="wl.Title" ng-change="changeWishlist(wl)" />
+            <a href="" ng-click="toggleWishlistVisibility(wl)">{{wl.IsPublic ? "Public" : "Private"}}</a>
+            <a href="" ng-click="removeWishlist(wl)">Remove</a>
+            <ul>
+                <li ng-repeat="wli in wl.WishlistItems">
+                    <input type="text" ng-model="wli.Content" ng-change="changeWishlistItem(wli)" />
+                    <a href="" ng-click="removeWishlistItem(wli, wl)">Remove</a>
+                </li>
+                <li><a href="" ng-click="addWishlistItem(wl)">Add Wishlist Item</a></li>
+            </ul>
+        </li>
+        <li><a href="" ng-click="addWishlist()">Add Wishlist</a></li>
+    </ul>
+</div>
+

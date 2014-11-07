@@ -1,0 +1,24 @@
+﻿@model WishlistApp.Models.UserJsonModel
+
+@{
+    var model = Model;
+    ViewBag.Title = string.Format("{0}'s public wishlists", model.UserName);
+}
+
+<div>
+    <ul>
+        @foreach (var wl in model.Wishlists)
+        {
+            <li>
+                <div>@wl.Title</div>
+                <ul>
+                    @foreach (var wli in wl.WishlistItems)
+                    {
+                        <li>@wli.Content</li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+</div>
+
