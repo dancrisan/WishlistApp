@@ -23,12 +23,9 @@ namespace WishlistApp.Controllers
         {
             using (var db = new WishlistContext())
             {
-                var userProfile =
-                    db.UserProfiles
-                    .FirstOrDefault(u => u.UserId == ureq.ID);
+                var userProfile = db.UserProfiles.FirstOrDefault(u => u.UserId == ureq.ID);
 
-                var userName =
-                    userProfile == null ? null : userProfile.UserName;
+                var userName = userProfile == null ? null : userProfile.UserName;
 
                 var jsonModel = new UserJsonModel
                 {
@@ -122,9 +119,7 @@ namespace WishlistApp.Controllers
         {
             using (var db = new WishlistContext())
             {
-                var wl =
-                    db.Wishlists
-                    .FirstOrDefault(wl2 => wl2.WishlistId == model.ID);
+                var wl = db.Wishlists.FirstOrDefault(wl2 => wl2.WishlistId == model.ID);
 
                 if (wl == null)
                 {
@@ -159,9 +154,7 @@ namespace WishlistApp.Controllers
         {
             using (var db = new WishlistContext())
             {
-                var wl =
-                    db.Wishlists
-                    .FirstOrDefault(wl2 => wl2.WishlistId == wlreq.ID);
+                var wl = db.Wishlists.FirstOrDefault(wl2 => wl2.WishlistId == wlreq.ID);
 
                 if (wl == null)
                 {
@@ -198,9 +191,7 @@ namespace WishlistApp.Controllers
         {
             using (var db = new WishlistContext())
             {
-                var wl =
-                    db.Wishlists
-                    .FirstOrDefault(wl2 => wl2.WishlistId == wlreq.ID);
+                var wl = db.Wishlists.FirstOrDefault(wl2 => wl2.WishlistId == wlreq.ID);
 
                 if (wl == null)
                 {
@@ -246,9 +237,7 @@ namespace WishlistApp.Controllers
         {
             using (var db = new WishlistContext())
             {
-                var wli =
-                    db.WishlistItems
-                    .FirstOrDefault(wli2 => wli2.WishlistItemId == wlireq.ID);
+                var wli = db.WishlistItems.FirstOrDefault(wli2 => wli2.WishlistItemId == wlireq.ID);
 
                 if (wli == null)
                 {
@@ -283,9 +272,7 @@ namespace WishlistApp.Controllers
         {
             using (var db = new WishlistContext())
             {
-                var wli =
-                    db.WishlistItems
-                    .FirstOrDefault(wli2 => wli2.WishlistItemId == wlireq.ID);
+                var wli = db.WishlistItems.FirstOrDefault(wli2 => wli2.WishlistItemId == wlireq.ID);
 
                 if (wli == null)
                 {
