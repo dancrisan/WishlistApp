@@ -10,7 +10,7 @@
         @foreach (var wl in model.Wishlists)
         {
             <li>
-                <div>@wl.Title</div>
+                <div>@wl.Info.Title</div>
                 <ul>
                     @foreach (var wli in wl.WishlistItems)
                     {

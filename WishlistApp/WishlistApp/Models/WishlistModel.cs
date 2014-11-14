@@ -10,13 +10,10 @@ namespace WishlistApp.Models
         public int ID { get; set; }
     }
 
-    public class WishlistItemArgumentModel : WishlistItemIDModel
+    public class WishlistItemJsonModel
     {
+        public int ID { get; set; }
         public string Content { get; set; }
-    }
-
-    public class WishlistItemJsonModel : WishlistItemArgumentModel
-    {
     }
 
     public class WishlistIDModel
@@ -24,14 +21,16 @@ namespace WishlistApp.Models
         public int ID { get; set; }
     }
 
-    public class WishlistArgumentModel : WishlistIDModel
+    public class WishlistJsonModel
     {
+        public int ID { get; set; }
         public string Title { get; set; }
         public bool IsPublic { get; set; }
     }
 
-    public class WishlistJsonModel : WishlistArgumentModel
+    public class WishlistFullJsonModel
     {
+        public WishlistJsonModel Info { get; set; }
         public WishlistItemJsonModel[] WishlistItems { get; set; }
     }
 
@@ -39,6 +38,6 @@ namespace WishlistApp.Models
     {
         public int UserID { get; set; }
         public string UserName { get; set; }
-        public WishlistJsonModel[] Wishlists { get; set; }
+        public WishlistFullJsonModel[] Wishlists { get; set; }
     }
 }

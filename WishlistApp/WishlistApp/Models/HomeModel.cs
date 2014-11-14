@@ -5,13 +5,14 @@ using System.Web;
 
 namespace WishlistApp.Models
 {
-    public class UserInfoArgumentModel
+    public class UserInfoIDModel
     {
         public int ID { get; set; }
     }
 
-    public class UserInfoJsonModel : UserInfoArgumentModel
+    public class UserInfoJsonModel
     {
+        public int ID { get; set; }
         public string UserName { get; set; }
     }
 

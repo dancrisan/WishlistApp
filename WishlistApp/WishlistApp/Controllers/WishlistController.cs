@@ -19,7 +19,7 @@ namespace WishlistApp.Controllers
         }
 
         //[AllowAnonymous]
-        public ActionResult ViewUser(UserInfoArgumentModel ureq)
+        public ActionResult ViewUser(UserInfoIDModel ureq)
         {
             using (var db = new WishlistContext())
             {
@@ -35,11 +35,14 @@ namespace WishlistApp.Controllers
                         db.Wishlists
                         .Where(wl => wl.UserId == ureq.ID && wl.IsPublic)
                         .AsEnumerable()
-                        .Select(wl => new WishlistJsonModel
+                        .Select(wl => new WishlistFullJsonModel
                         {
-                            ID = wl.WishlistId,
-                            Title = wl.WishlistTitle,
-                            IsPublic = wl.IsPublic,
+                            Info = new WishlistJsonModel
+                            {
+                                ID = wl.WishlistId,
+                                Title = wl.WishlistTitle,
+                                IsPublic = wl.IsPublic
+                            },
                             WishlistItems =
                                 wl.WishlistItems
                                 .AsEnumerable()
@@ -71,11 +74,14 @@ namespace WishlistApp.Controllers
                         db.Wishlists
                         .Where(wl => wl.UserId == userid)
                         .AsEnumerable()
-                        .Select(wl => new WishlistJsonModel
+                        .Select(wl => new WishlistFullJsonModel
                         {
-                            ID = wl.WishlistId,
-                            Title = wl.WishlistTitle,
-                            IsPublic = wl.IsPublic,
+                            Info = new WishlistJsonModel
+                            {
+                                ID = wl.WishlistId,
+                                Title = wl.WishlistTitle,
+                                IsPublic = wl.IsPublic
+                            },
                             WishlistItems =
                                 wl.WishlistItems
                                 .AsEnumerable()
@@ -105,17 +111,20 @@ namespace WishlistApp.Controllers
                 db.Wishlists.Add(wl);
                 db.SaveChanges();
 
-                return Json(new WishlistJsonModel
+                return Json(new WishlistFullJsonModel
                 {
-                    ID = wl.WishlistId,
-                    Title = wl.WishlistTitle,
-                    IsPublic = wl.IsPublic,
+                    Info = new WishlistJsonModel
+                    {
+                        ID = wl.WishlistId,
+                        Title = wl.WishlistTitle,
+                        IsPublic = wl.IsPublic
+                    },
                     WishlistItems = new WishlistItemJsonModel[] { }
                 });
             }
         }
 
-        public ActionResult ChangeWishlist(WishlistArgumentModel model)
+        public ActionResult ChangeWishlist(WishlistJsonModel model)
         {
             using (var db = new WishlistContext())
             {
@@ -233,7 +242,7 @@ namespace WishlistApp.Controllers
             }
         }
 
-        public ActionResult ChangeWishlistItem(WishlistItemArgumentModel wlireq)
+        public ActionResult ChangeWishlistItem(WishlistItemJsonModel wlireq)
         {
             using (var db = new WishlistContext())
             {
