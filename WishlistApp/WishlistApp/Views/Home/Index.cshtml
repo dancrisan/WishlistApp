@@ -13,27 +13,7 @@
     </section>
 }
 
-@section scripts {
-    <script type="text/javascript">
-        wishlistApp.controller('userInfosController', function ($scope, $http)
-        {
-            $scope.users = [];
-
-            $http.post("@Url.Action("GetUserInfos", "Home")", {})
-                .success(function (data, status, headers, config)
-                {
-                    $scope.users = data.Users;
-                });
-
-            $scope.viewUser = function (userId)
-            {
-                window.location.href = "@Url.Action("ViewUser", "Wishlist")?ID=" + userId;
-            }
-        });
-    </script>
-}
-
-<div ng-controller="userInfosController">
+<div ng-controller="listUsersController">
     <h3>Or view wishlists listed as public:</h3>
     <div ng-repeat="u in users">
         <a href="" ng-click="viewUser(u.ID)">{{u.UserName}}</a>
