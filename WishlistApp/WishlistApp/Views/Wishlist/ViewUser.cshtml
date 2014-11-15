@@ -1,24 +1,22 @@
-﻿@model WishlistApp.Models.UserJsonModel
+﻿@model WishlistApp.Models.UserInfoJsonModel
 
 @{
-    var model = Model;
-    ViewBag.Title = string.Format("{0}'s public wishlists", model.UserName);
+    ViewBag.Title = string.Format("{0}'s Public Wishlists", Model.UserName);
 }
 
-<div>
-    <ul>
-        @foreach (var wl in model.Wishlists)
-        {
-            <li>
-                <div>@wl.Info.Title</div>
+<h2>@Model.UserName's Public Wishlists</h2>
+<div ng-init="userId=@Model.ID">
+    <div ng-controller="viewPublicWishlistsController" ng-cloak>
+        <ul>
+            <li ng-repeat="wl in Wishlists">
+                <div>{{wl.Info.Title}}</div>
                 <ul>
-                    @foreach (var wli in wl.WishlistItems)
-                    {
-                        <li>@wli.Content</li>
-                    }
+                    <li ng-repeat="wli in wl.WishlistItems">
+                        <div>{{wli.Content}}</div>
+                    </li>
                 </ul>
             </li>
-        }
-    </ul>
+        </ul>
+    </div>
 </div>
 

@@ -25,6 +25,22 @@ namespace WishlistApp.Controllers
             {
                 var userProfile = db.UserProfiles.FirstOrDefault(u => u.UserId == ureq.ID);
 
+                var userModel = new UserInfoJsonModel
+                {
+                    ID = ureq.ID,
+                    UserName = userProfile == null ? "" : userProfile.UserName
+                };
+
+                return View(userModel);
+            }
+        }
+
+        public ActionResult GetPublicWishlists(UserInfoIDModel ureq)
+        {
+            using (var db = new WishlistContext())
+            {
+                var userProfile = db.UserProfiles.FirstOrDefault(u => u.UserId == ureq.ID);
+
                 var userName = userProfile == null ? null : userProfile.UserName;
 
                 var jsonModel = new UserJsonModel
@@ -56,7 +72,7 @@ namespace WishlistApp.Controllers
                         .ToArray()
                 };
 
-                return View(jsonModel);
+                return Json(jsonModel);
             }
         }
 

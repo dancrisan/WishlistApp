@@ -26,6 +26,17 @@ wishlistApp.controller('listUsersController', function ($scope, $http)
     }
 });
 
+wishlistApp.controller('viewPublicWishlistsController', function ($scope, $http)
+{
+    $scope.Wishlists = [];
+
+    $http.post(urlFor("GetPublicWishlists", "Wishlist"), { ID: $scope.userId })
+        .success(function (data, status, headers, config)
+        {
+            $scope.Wishlists = data.Wishlists;
+        });
+});
+
 wishlistApp.controller("wishlistsController", function ($scope, $http)
 {
     $scope.Wishlists = [];
