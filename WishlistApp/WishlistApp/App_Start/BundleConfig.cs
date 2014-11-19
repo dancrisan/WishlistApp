@@ -29,7 +29,11 @@ namespace WishlistApp
             bundles.Add(new ScriptBundle("~/controllers").Include(
                         "~/Scripts/!controllers.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                        "~/Content/Fonts.css",
+                        "~/Content/Site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/fonts").Include("~/Content/fonts/*.woff"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

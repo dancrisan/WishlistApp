@@ -18,6 +18,23 @@ namespace WishlistApp.Controllers
             return View();
         }
 
+        public ActionResult SearchUser(string username)
+        {
+            using (var db = new WishlistContext())
+            {
+                var user = db.UserProfiles.FirstOrDefault(u => u.UserName == username);
+
+                if (user == null)
+                {
+                    throw new NotImplementedException();
+                }
+                else
+                {
+                    return RedirectToAction("ViewUser", new System.Web.Routing.RouteValueDictionary());
+                }
+            }
+        }
+
         //[AllowAnonymous]
         public ActionResult ViewUser(UserInfoIDModel ureq)
         {

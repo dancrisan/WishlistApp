@@ -131,6 +131,7 @@ namespace WishlistApp.Controllers
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+                : message == ManageMessageId.ChangeProfilePhotoSuccess ? "Your profile photo has been changed."
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -198,6 +199,57 @@ namespace WishlistApp.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+
+
+        //
+        // POST: /Account/ChangeProfilePhoto
+
+        public ActionResult GetProfilePhoto()
+        {
+            using (var db = new WishlistContext())
+            {
+                var userID = WebSecurity.CurrentUserId;
+                var user = db.webpages_Membership.FirstOrDefault(u => u.UserId == userID);
+
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    var picture = user.ProfilePicture;
+                    return File(picture, "image/jpeg");
+                }
+            }
+        }
+        
+        //
+        // POST: /Account/ChangeProfilePhoto
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangeProfilePhoto(HttpPostedFileBase image)
+        {
+            using (var db = new WishlistContext())
+            {
+                var userID = WebSecurity.CurrentUserId;
+                var user = db.webpages_Membership.FirstOrDefault(u => u.UserId == userID);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "The current user does not exist.");
+                    return View();
+                }
+                else
+                {
+                    var reader = new System.IO.BinaryReader(image.InputStream);
+                    user.ProfilePicture = reader.ReadBytes(Math.Min(4194304, image.ContentLength));
+                    db.SaveChanges();
+                    return RedirectToAction("Manage", new { Message = ManageMessageId.ChangeProfilePhotoSuccess });
+                }
+            }
         }
 
         //
@@ -346,6 +398,7 @@ namespace WishlistApp.Controllers
             ChangePasswordSuccess,
             SetPasswordSuccess,
             RemoveLoginSuccess,
+            ChangeProfilePhotoSuccess,
         }
 
         internal class ExternalLoginResult : ActionResult

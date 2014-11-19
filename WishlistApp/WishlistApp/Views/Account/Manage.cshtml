@@ -11,12 +11,14 @@
 
 <p>You're logged in as <strong>@User.Identity.Name</strong>.</p>
 
+@Html.Partial("_ChangePhotoPartial")
+
 @if (ViewBag.HasLocalPassword)
 {
     @Html.Partial("_ChangePasswordPartial")
 }
 else
-{ 
+{
     @Html.Partial("_SetPasswordPartial")
 }
 

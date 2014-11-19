@@ -27,6 +27,7 @@
           <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
           <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+          <Property Name="ProfilePicture" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="webpages_OAuthMembership">
           <Key>
@@ -242,6 +243,7 @@
           <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+          <Property Name="ProfilePicture" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="webpages_OAuthMembership">
           <Key>
@@ -300,6 +302,7 @@
           <EntitySetMapping Name="webpages_Membership">
             <EntityTypeMapping TypeName="Model.webpages_Membership">
               <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
                 <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
                 <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
                 <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />

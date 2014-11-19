@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - Wishlist App</title>
+    <title>@ViewBag.Title - Wishroll</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
@@ -14,7 +14,10 @@
     <header>
         <div class="content-wrapper">
             <div class="float-left">
-                <p class="site-title">@Html.ActionLink("Wishlist App", "Index", "Home")</p>
+                <p class="site-title">@Html.ActionLink("Wishroll", "Index", "Home")</p>
+            </div>
+            <div class="float-left">
+                <input id="search-textbox" type="text" />
             </div>
             <div class="float-right">
                 <section id="login">
@@ -39,7 +42,7 @@
     <footer>
         <div class="content-wrapper">
             <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - Wishlist App</p>
+                <p>&copy; @DateTime.Now.Year - Wishroll</p>
             </div>
         </div>
     </footer>

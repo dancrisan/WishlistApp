@@ -188,6 +188,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FriendshipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WishlistController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -237,6 +238,7 @@
     <Content Include="App_Data\wishlist-data_log.ldf">
       <DependentUpon>wishlist-data.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Fonts.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -344,6 +346,19 @@
       <DependentUpon>WishlistEntities.edmx</DependentUpon>
       <LastGenOutput>WishlistEntities.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\fonts\SegoeWP-Black.woff" />
+    <Content Include="Content\fonts\SegoeWP-Bold.woff" />
+    <Content Include="Content\fonts\SegoeWP-Light.woff" />
+    <Content Include="Content\fonts\SegoeWP-Semibold.woff" />
+    <Content Include="Content\fonts\SegoeWP.woff" />
+    <Content Include="Content\fonts\Calluna-Black.otf.woff" />
+    <Content Include="Content\fonts\Calluna-Bold.otf.woff" />
+    <Content Include="Content\fonts\Calluna-BoldIt.otf.woff" />
+    <Content Include="Content\fonts\Calluna-It.otf.woff" />
+    <Content Include="Content\fonts\Calluna-Light.otf.woff" />
+    <Content Include="Content\fonts\Calluna-Regular.otf.woff" />
+    <Content Include="Content\fonts\Calluna-Semibold.otf.woff" />
+    <Content Include="Content\fonts\Calluna-SemiboldIt.otf.woff" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
@@ -1126,6 +1141,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Wishlist\Index.cshtml" />
     <Content Include="Views\Wishlist\ViewUser.cshtml" />
+    <Content Include="Views\Account\_ChangePhotoPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

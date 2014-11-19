@@ -1,0 +1,91 @@
+﻿/* Segoe WP */
+
+@font-face {
+    font-family: 'segoewp';
+    src: url(fonts/SegoeWP-Black.woff);
+    font-weight: 900;
+}
+
+@font-face {
+    font-family: 'segoewp';
+    src: url(fonts/SegoeWP-Bold.woff);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'segoewp';
+    src: url(fonts/SegoeWP-Semibold.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'segoewp';
+    src: url(fonts/SegoeWP.woff);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'segoewp';
+    src: url(fonts/SegoeWP-Light.woff);
+    font-weight: 300;
+}
+
+/* Calluna */
+
+@font-face {
+    font-family: calluna;
+    src: url(fonts/Calluna-Light.otf.woff);
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: calluna;
+    src: url(fonts/Calluna-Regular.otf.woff);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: calluna;
+    src: url(fonts/Calluna-It.otf.woff);
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: calluna;
+    src: url(fonts/Calluna-Semibold.otf.woff);
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: calluna;
+    src: url(fonts/Calluna-SemiboldIt.otf.woff);
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: calluna;
+    src: url(fonts/Calluna-Bold.otf.woff);
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: calluna;
+    src: url(fonts/Calluna-BoldIt.otf.woff);
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: calluna;
+    src: url(fonts/Calluna-Black.otf.woff);
+    font-weight: 900;
+    font-style: normal;
+}
+
+
