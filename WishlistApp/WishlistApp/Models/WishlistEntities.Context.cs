@@ -25,11 +25,13 @@ namespace WishlistApp.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Friendship> Friendships { get; set; }
+        public DbSet<FriendshipRequest> FriendshipRequests { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
+        public DbSet<webpages_Membership> webpages_Membership { get; set; }
+        public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
         public DbSet<webpages_Roles> webpages_Roles { get; set; }
         public DbSet<Wishlist> Wishlists { get; set; }
         public DbSet<WishlistItem> WishlistItems { get; set; }
-        public DbSet<webpages_Membership> webpages_Membership { get; set; }
-        public DbSet<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
     }
 }

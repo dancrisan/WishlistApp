@@ -4,15 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d979fe39e279424cb4a0f5dde1ccb6f7" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.webpages_Roles" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Wishlist" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.WishlistItem" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <AssociationConnector Association="Model.UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.WishlistId" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.webpages_Membership" Width="1.5" PointX="3.375" PointY="4.75" />
-        <EntityTypeShape EntityType="Model.webpages_OAuthMembership" Width="1.5" PointX="5.375" PointY="3.75" />
+      <Diagram DiagramId="d979fe39e279424cb4a0f5dde1ccb6f7" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="Model.Friendship" Width="1.5" PointX="7.5" PointY="8.375" />
+        <EntityTypeShape EntityType="Model.FriendshipRequest" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="Model.UserProfile" Width="1.5" PointX="3.125" PointY="7.25" />
+        <EntityTypeShape EntityType="Model.webpages_Membership" Width="1.5" PointX="0.75" PointY="10.25" />
+        <EntityTypeShape EntityType="Model.webpages_OAuthMembership" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="Model.webpages_Roles" Width="1.5" PointX="0.75" PointY="8.125" />
+        <EntityTypeShape EntityType="Model.Wishlist" Width="1.5" PointX="5.25" PointY="5.375" />
+        <EntityTypeShape EntityType="Model.WishlistItem" Width="1.5" PointX="7.5" PointY="5.625" />
+        <AssociationConnector Association="Model.FK__Friendshi__UserI__44FF419A" />
+        <AssociationConnector Association="Model.FK__Friendshi__UserI__45F365D3" />
+        <AssociationConnector Association="Model.FK__Friendshi__Recei__4AB81AF0" />
+        <AssociationConnector Association="Model.FK__Friendshi__Sende__49C3F6B7" />
+        <AssociationConnector Association="Model.FK__webpages___UserI__4F7CD00D" />
+        <AssociationConnector Association="Model.FK__webpages___UserI__5070F446" />
+        <AssociationConnector Association="Model.UserId" />
+        <AssociationConnector Association="Model.WishlistId" />
         <AssociationConnector Association="Model.webpages_UsersInRoles" />
       </Diagram>
     </edmx:Diagrams>

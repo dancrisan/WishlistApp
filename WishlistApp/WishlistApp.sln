@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WishlistApp", "WishlistApp\WishlistApp.csproj", "{788093C7-72E7-4E8A-B3C0-7D90220DE4D0}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WishlistApp.Lib", "WishlistApp.Lib\WishlistApp.Lib.fsproj", "{F9A115E3-136F-40ED-9F74-2AFC4CACE643}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{788093C7-72E7-4E8A-B3C0-7D90220DE4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{788093C7-72E7-4E8A-B3C0-7D90220DE4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{788093C7-72E7-4E8A-B3C0-7D90220DE4D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9A115E3-136F-40ED-9F74-2AFC4CACE643}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9A115E3-136F-40ED-9F74-2AFC4CACE643}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9A115E3-136F-40ED-9F74-2AFC4CACE643}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9A115E3-136F-40ED-9F74-2AFC4CACE643}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

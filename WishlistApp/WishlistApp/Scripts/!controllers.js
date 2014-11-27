@@ -30,6 +30,7 @@ wishlistApp.controller('viewPublicWishlistsController', function ($scope, $http)
 {
     $scope.Wishlists = [];
 
+    // $scope.userId is set in ng-init attribute
     $http.post(urlFor("GetPublicWishlists", "Wishlist"), { ID: $scope.userId })
         .success(function (data, status, headers, config)
         {
@@ -51,7 +52,10 @@ wishlistApp.controller("wishlistsController", function ($scope, $http)
                 $http.post(urlFor("NewWishlist", "Wishlist"), {})
                     .success(function (data, status, headers, config)
                     {
-                        $scope.Wishlists.push(data);
+                        if (data.Success)
+                            $scope.Wishlists.push(data.Result);
+                        else
+                            console.warn(data.Exception);
                     });
             };
 
@@ -69,12 +73,11 @@ wishlistApp.controller("wishlistsController", function ($scope, $http)
 
             $scope.toggleWishlistVisibility = function (wl)
             {
-                wl.Info.IsPublic = !wl.Info.IsPublic;
                 $http.post(urlFor("ChangeWishlist", "Wishlist"), wl.Info)
                     .success(function (data, status, headers, config)
                     {
                         if (data.Success)
-                            ;
+                            wl.Info.IsPublic = !wl.Info.IsPublic;
                         else
                             console.warn(data.Exception);
                     });

@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using WishlistApp.Filters;
 using WishlistApp.Models;
+using WishlistApp.Lib;
 
 namespace WishlistApp.Controllers
 {
@@ -219,12 +220,12 @@ namespace WishlistApp.Controllers
                 }
                 else
                 {
-                    var picture = user.ProfilePicture;
+                    var picture = user.ProfilePicture128;
                     return File(picture, "image/jpeg");
                 }
             }
         }
-        
+
         //
         // POST: /Account/ChangeProfilePhoto
 
@@ -244,10 +245,21 @@ namespace WishlistApp.Controllers
                 }
                 else
                 {
-                    var reader = new System.IO.BinaryReader(image.InputStream);
-                    user.ProfilePicture = reader.ReadBytes(Math.Min(4194304, image.ContentLength));
-                    db.SaveChanges();
-                    return RedirectToAction("Manage", new { Message = ManageMessageId.ChangeProfilePhotoSuccess });
+                    try
+                    {
+                        var origImg = new Image(image.InputStream);
+                        var img128 = origImg.Resize(128, 128).SerializeJpeg();
+                        var img32 = origImg.Resize(32, 32).SerializeJpeg();
+                        user.ProfilePicture128 = img128;
+                        user.ProfilePicture32 = img32;
+                        db.SaveChanges();
+                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangeProfilePhotoSuccess });
+                    }
+                    catch (Exception ex)
+                    {
+                        ModelState.AddModelError("", ex.Message);
+                        return View();
+                    }
                 }
             }
         }

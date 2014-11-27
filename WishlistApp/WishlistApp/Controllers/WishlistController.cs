@@ -18,23 +18,6 @@ namespace WishlistApp.Controllers
             return View();
         }
 
-        public ActionResult SearchUser(string username)
-        {
-            using (var db = new WishlistContext())
-            {
-                var user = db.UserProfiles.FirstOrDefault(u => u.UserName == username);
-
-                if (user == null)
-                {
-                    throw new NotImplementedException();
-                }
-                else
-                {
-                    return RedirectToAction("ViewUser", new System.Web.Routing.RouteValueDictionary());
-                }
-            }
-        }
-
         //[AllowAnonymous]
         public ActionResult ViewUser(UserInfoIDModel ureq)
         {
@@ -144,15 +127,19 @@ namespace WishlistApp.Controllers
                 db.Wishlists.Add(wl);
                 db.SaveChanges();
 
-                return Json(new WishlistFullJsonModel
+                return Json(new
                 {
-                    Info = new WishlistJsonModel
+                    Success = true,
+                    Result = new WishlistFullJsonModel
                     {
-                        ID = wl.WishlistId,
-                        Title = wl.WishlistTitle,
-                        IsPublic = wl.IsPublic
-                    },
-                    WishlistItems = new WishlistItemJsonModel[] { }
+                        Info = new WishlistJsonModel
+                        {
+                            ID = wl.WishlistId,
+                            Title = wl.WishlistTitle,
+                            IsPublic = wl.IsPublic
+                        },
+                        WishlistItems = new WishlistItemJsonModel[] { }
+                    }
                 });
             }
         }

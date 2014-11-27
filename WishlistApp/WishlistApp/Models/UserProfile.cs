@@ -16,6 +16,11 @@ namespace WishlistApp.Models
     {
         public UserProfile()
         {
+            this.Friendships = new HashSet<Friendship>();
+            this.Friendships1 = new HashSet<Friendship>();
+            this.FriendshipRequests = new HashSet<FriendshipRequest>();
+            this.FriendshipRequests1 = new HashSet<FriendshipRequest>();
+            this.webpages_OAuthMembership = new HashSet<webpages_OAuthMembership>();
             this.Wishlists = new HashSet<Wishlist>();
             this.webpages_Roles = new HashSet<webpages_Roles>();
         }
@@ -23,6 +28,12 @@ namespace WishlistApp.Models
         public int UserId { get; set; }
         public string UserName { get; set; }
     
+        public virtual ICollection<Friendship> Friendships { get; set; }
+        public virtual ICollection<Friendship> Friendships1 { get; set; }
+        public virtual ICollection<FriendshipRequest> FriendshipRequests { get; set; }
+        public virtual ICollection<FriendshipRequest> FriendshipRequests1 { get; set; }
+        public virtual webpages_Membership webpages_Membership { get; set; }
+        public virtual ICollection<webpages_OAuthMembership> webpages_OAuthMembership { get; set; }
         public virtual ICollection<Wishlist> Wishlists { get; set; }
         public virtual ICollection<webpages_Roles> webpages_Roles { get; set; }
     }

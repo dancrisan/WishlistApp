@@ -12,12 +12,13 @@ namespace WishlistApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class webpages_OAuthMembership
+    public partial class Friendship
     {
-        public string Provider { get; set; }
-        public string ProviderUserId { get; set; }
-        public int UserId { get; set; }
+        public int UserIdLower { get; set; }
+        public int UserIdUpper { get; set; }
+        public System.DateTime FriendshipSince { get; set; }
     
         public virtual UserProfile UserProfile { get; set; }
+        public virtual UserProfile UserProfile1 { get; set; }
     }
 }
