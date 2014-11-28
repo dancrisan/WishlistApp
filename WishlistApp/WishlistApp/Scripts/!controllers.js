@@ -73,11 +73,12 @@ wishlistApp.controller("wishlistsController", function ($scope, $http)
 
             $scope.toggleWishlistVisibility = function (wl)
             {
+                wl.Info.IsPublic = !wl.Info.IsPublic;
                 $http.post(urlFor("ChangeWishlist", "Wishlist"), wl.Info)
                     .success(function (data, status, headers, config)
                     {
                         if (data.Success)
-                            wl.Info.IsPublic = !wl.Info.IsPublic;
+                            ;
                         else
                             console.warn(data.Exception);
                     });
