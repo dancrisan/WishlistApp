@@ -1,6 +1,5 @@
-WishlistApp
+Wishroll
 ===========
 
-Coming Soon. 
-Description pending; due before presentation.
+A Web App that allows sharing lists between existing members of the network
 
